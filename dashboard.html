@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - SAPUI5</title>
+    <script id="sap-ui-bootstrap" 
+            src="https://sdk.openui5.org/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-preload="async">
+    </script>
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            var app = new sap.m.App({
+                pages: [
+                    new sap.m.Page({
+                        title: "Dashboard",
+                        content: [
+                            new sap.m.Toolbar({
+                                        content: [
+                                            new sap.m.Title({ text: "Acxias Connector" }).addStyleClass("sapUiSmallMargin"),
+                                            new sap.m.ToolbarSpacer(), 
+                                            new sap.m.Text({ text: "Hi Romain MARESCAUX!" }).addStyleClass("sapUiSmallMargin"), 
+                                            new sap.m.ToolbarSpacer(),
+                                            new sap.m.Button({
+                                                text: "Sign out",
+                                                press: function () {
+                                                    window.location.href = "index.html";
+                                                                     }
+                                                                }) 
+                                                    ]   
+                                                }),
+                            new sap.m.SplitContainer({
+                                masterPages: [
+                                    new sap.m.Page({
+                                        title: "Menu",
+                                        content: [
+                                            new sap.m.List({
+                                                items: [
+                                                    new sap.m.StandardListItem({
+                                                        title: "Supplier Request",
+                                                        type: "Active"
+                                                    })
+                                                ]
+                                            })
+                                        ]
+                                    })
+                                ],
+                                detailPages: [
+                                    new sap.m.Page({
+                                        title: "Form for Supplier Request",
+                                        content: [
+                                            new sap.m.VBox({
+                                                items: [
+                                                    new sap.m.Text({ text: "All suppliers must have a D-U-N-S number. To request a new supplier, search for the supplier in the D&B database. If the supplier isn't in the database, ask the supplier to get a D-U-N-S number or request an exception by clicking Can't find supplier after the search." }),
+                                                    new sap.m.Label({ text: "Search by" }),
+                                                    new sap.m.Select({
+                                                        items: [
+                                                            new sap.ui.core.Item({ text: "Supplier Name", key: "supplier_name" }),
+                                                            new sap.ui.core.Item({ text: "D-U-N-S Number", key: "duns_number" }),
+                                                            new sap.ui.core.Item({ text: "Business ID", key: "business_id" }),
+                                                            new sap.ui.core.Item({ text: "Email", key: "email" }),
+                                                            new sap.ui.core.Item({ text: "Website", key: "website" }),
+                                                            new sap.ui.core.Item({ text: "Phone Number", key: "phone_number" })
+                                                        ]
+                                                    }),
+                                                    new sap.m.CheckBox({ text: "Only Active Supplier", selected: true }),
+                                                    new sap.m.Label({ text: "Country *" }),
+                                                    new sap.m.Input({ placeholder: "Search a country...", required: true }),
+                                                    new sap.m.Label({ text: "Supplier Name *" }),
+                                                    new sap.m.Input({ placeholder: "Enter Supplier Name", required: true }),
+                                                    new sap.m.Button({
+                                                        text: "Search",
+                                                        type: "Emphasized",
+                                                        press: function () {
+                                                            sap.m.MessageToast.show("Searching...");
+                                                        }
+                                                    }),
+                                                    
+                                                    
+                                                ]
+                    
+                                            })
+                                        ]
+                                    })
+                                ]
+                            })
+                        ]
+                    })
+                ]
+            });
+            app.placeAt("content");
+        });
+    </script>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+</html>
