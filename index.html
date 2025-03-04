@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login - SAPUI5</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+
+    </style>
+    <script id="sap-ui-bootstrap" 
+            src="https://sdk.openui5.org/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-preload="async">
+    </script>
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            new sap.m.App({
+                pages: [
+                    new sap.m.Page({
+                        title: "Login",
+                        content: [
+                            new sap.m.VBox({
+                                alignItems: "Center",
+                                justifyContent: "Center",
+                                width: "100%",
+                                height: "80vh",
+                                items: [
+                                    new sap.m.Input({
+                                        placeholder: "Nom d'utilisateur",
+                                        width: "250px"
+                                    }),
+                                    new sap.m.Input({
+                                        placeholder: "Mot de passe",
+                                        type: "Password",
+                                        width: "250px"
+                                    }),
+                                    new sap.m.Button({
+                                        text: "Se connecter",
+                                        press: function () {
+                                            sap.m.MessageToast.show("Connexion en cours...");
+                                            window.location.href = "dashboard.html";
+                                        }
+                                    })
+                                ]
+                            }).addStyleClass("sapUiSmallMargin")
+                        ]
+                    })
+                ]
+            }).placeAt("content");
+        });
+    </script>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+</html>
